@@ -15,21 +15,24 @@ class Admin::GenresController < ApplicationController
     if @genre.save
       redirect_to admin_genres_path
     else
-      @genres = Genre.all
-      render :'index'
+      @genres = Genre.page(params[:page])
+      render :index
     end
   end
 
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      redirect_to admin_genres_path
+      redirect_to admin_genres_path(@genres)
     else
-      render :"edit"
+      render :edit
     end
   end
 
   def show
+    @genres = Genre.all
+    @genre = Genre.find(params[:id])
+    @all_items = @genre.items
   end
 
 private
