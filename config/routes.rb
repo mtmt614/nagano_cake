@@ -17,6 +17,8 @@ resources :genres, only: [:index, :edit, :create, :update, :show]
 resources :items, only: [:index, :create, :new, :show, :edit, :update]
 resources :customers, only: [:index, :show, :edit, :update]
 end
+
+get 'customers' =>  redirect("/customers/sign_up")
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
