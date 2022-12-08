@@ -5,7 +5,6 @@ class Public::CartItemsController < ApplicationController
     @total = 0
   end
 
-  
   private
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount)
