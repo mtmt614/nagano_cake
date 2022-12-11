@@ -5,10 +5,12 @@
 <table class="table table-borderless">
   <tr class="d-flex d-block flex-wrap justify-content-center ">
     <% @items.each do |item| %>
+    <%= link_to item_path(item) do %>
+      <p class="figure-caption"><%= item.name %></p>
+      <p class="figure-caption">¥<%= item.with_tax_price %></p>
+    <% end %>
     
     <% end %>
-  
-
 </table>
   
 </div>
