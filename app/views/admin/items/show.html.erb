@@ -3,7 +3,7 @@
 
   <div class="row mt-5">
     <div class="col-md-4 offset-2">
-        <%= image_tag @item.get_image, size: "00x200" %>
+        <%= image_tag @item.image, size: "300x200" %>
     </div>
 
     <div class="col-md-6">
@@ -21,7 +21,7 @@
           <%= "商品説明" %>
         </div>
         <div class="h4 col-md-5" >
-          <%= @item.description %>
+          <%= @item.introduction %>
         </div>
       </div>
 
