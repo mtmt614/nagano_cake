@@ -3,7 +3,7 @@
 
   <div class="row mt-5">
     <div class="col-md-4 offset-2">
-        <%= image_tag @item.image, size: "300x200" %>
+        <%= image_tag @item.get_image, size: "300x200" %>
     </div>
 
     <div class="col-md-6">
@@ -48,7 +48,7 @@
           <%= "販売ステータス" %>
         </div>
         <div class="h4 col-md-5" >
-          <%if @item.sale_status == true %>
+          <%if @item.is_active == true %>
              <b class="text-success">販売中</b>
           <% else %>
             <b class="text-black-50">販売停止中</b>
