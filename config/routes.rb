@@ -17,6 +17,9 @@ get '/' => 'homes#top' , as: "login"
 end
 
 # 顧客用
+
+get 'customers/my_page' => 'public/customers#show'
+
   devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
