@@ -23,6 +23,11 @@
         <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
       </div>
 
+      <div class="row mb-3">
+        <%= f.label "税抜価格", class: "col-md-3 col-form-label" %>
+        <%= f.text_field :price, class: "col-md-5 form-control item_name", placeholder:"1000" %>円
+      </div>
+
 <div class="row mb-3">
         <%= f.label "販売ステータス", class: "col-md-3 col-form-label" %>
         <div class = "form-check">
