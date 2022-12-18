@@ -16,6 +16,12 @@ get '/' => 'homes#top' , as: "login"
 
 end
 
+get 'customers/my_page' => 'public/customers#show'
+get 'customers/information/edit' => 'public/customers#edit'
+patch 'customers/information' => 'public/customers#update'
+get 'customers/unsubscribe' => 'public/customers#unsubscribe'
+patch 'customers/withdraw' => 'public/customers#withdraw'
+
 # 顧客用
 
 get 'customers/my_page' => 'public/customers#show'
