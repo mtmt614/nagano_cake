@@ -59,5 +59,9 @@
         <%= f.text_field :email, class: "form-control border-dark" %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-lg-3 mt-4 offset-lg-3 text-center"><%= f.submit "編集内容を保存", style: 'width:150px', class: "btn btn-outline-success" %></div>
+      <div class="col-lg-3 mt-4 text-center"><%= link_to "退会する", customers_unsubscribe_path, style: 'width:150px', class: "btn btn-outline-danger" %></div>
+    </div>
   <% end %>
 </div>
