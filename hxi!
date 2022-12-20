@@ -1,0 +1,23 @@
+
+[1mFrom:[0m /home/ec2-user/environment/nagano_cake/app/controllers/public/cart_items_controller.rb:28 Public::CartItemsController#create:
+
+    [1;34m26[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m27[0m:   binding.pry
+ => [1;34m28[0m:   @cart_item = current_customer.cart_items.new(cart_item_params)
+    [1;34m29[0m:   @cart_items = current_customer.cart_items.all
+    [1;34m30[0m:   @cart_items.each [32mdo[0m |cart_item|
+    [1;34m31[0m:     [32mif[0m @cart_item.item_id == cart_item.item_id
+    [1;34m32[0m:       [32mif[0m @cart_item.amount.present?
+    [1;34m33[0m:         cart_item.update([35mamount[0m: @cart_item.amount + cart_item.amount)
+    [1;34m34[0m:         @cart_item.delete
+    [1;34m35[0m:       [32mend[0m
+    [1;34m36[0m:     [32mend[0m
+    [1;34m37[0m:   [32mend[0m
+    [1;34m38[0m:   [32mif[0m @cart_item.amount.present?
+    [1;34m39[0m:     @cart_item.save
+    [1;34m40[0m:     redirect_to cart_items_path
+    [1;34m41[0m:   [32melse[0m
+    [1;34m42[0m:     redirect_to item_path(@cart_item.item)
+    [1;34m43[0m:   [32mend[0m
+    [1;34m44[0m: [32mend[0m
+
