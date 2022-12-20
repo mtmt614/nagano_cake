@@ -23,6 +23,12 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
+  def destroy_all
+    @cart_items = current_customer.cart_items
+    @cart_items.destroy_all
+    redirect_to cart_items_path
+  end
+
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
     @cart_items = current_customer.cart_items.all
@@ -34,7 +40,7 @@ class Public::CartItemsController < ApplicationController
         end
       end
     end
-    
+
     if @cart_item.amount.present?
       @cart_item.save
       redirect_to cart_items_path

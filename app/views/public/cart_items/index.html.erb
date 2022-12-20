@@ -16,9 +16,21 @@
       <tr>
           <td><%= image_tag cart_item.item.get_image, size: "50x50" %>
           <%= cart_item.item.name %></td>
-          <td><%= cart_item.item.with_tax_price%></td>
-          <td><%= cart_item.item.with_tax_price * cart_item.amount %></td>
-          <td><% @total = @total + cart_item.item.with_tax_price * cart_item.amount %></td>
+          <td><%= cart_item.item.with_tax_price %></td>
+          
+          <td><%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+                <% if cart_item.amount < 10 %>
+                  <%= f.select :amount, *[1..10], class: "inline-block", include_blank: cart_item.amount %>
+                <% else %>
+                  <%= f.text_field :amount, class: "form-control-sm", include_blank: cart_item.amount, type: "number" %>
+                <% end %>
+                <%= f.hidden_field :item_id, :value => cart_item.item.id %>
+                <%= f.submit '変更', class: "btn btn-outline-success btn-sm" %>
+              <% end %>
+          </td>
+          
+          <td><%= cart_item.subtotal %>
+          <% @total += cart_item.subtotal %></td>
       </tr>
   <% end %>
   </tbody>
