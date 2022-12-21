@@ -37,3 +37,13 @@
   <% end %>
   </tbody>
 </table>
+
+        <table class="table table-bordered">
+          <tr>
+            <td>合計金額</td>
+            <% @cart_items.each do |cart_item| %>
+              <% @total = @total + cart_item.item.price * cart_item.amount %>
+            <% end %>
+            <td><%= @total %></td>
+          </tr>
+        </table>
