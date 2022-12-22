@@ -24,6 +24,9 @@ patch 'customers/withdraw' => 'public/customers#withdraw'
 
 # 顧客用
 
+root to: 'public/homes#top'
+get 'about' => 'public/homes#about'
+
 get 'customers/my_page' => 'public/customers#show'
 
   devise_for :customers, skip: [:encrypted_passwords], controllers: {
