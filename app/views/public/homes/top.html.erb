@@ -5,3 +5,21 @@
     購入には会員登録が必要になります。
     </p>
 </div>
+
+<div class="container new-item">
+  <h2>新着商品</h2>
+  <div class="row">
+    <table class="table table-borderless">
+    <tr class="d-flex d-block flex-wrap justify-content-center ">
+      <% @items.each do |item| %>
+       <td class="new_item_table">
+          <%= link_to item_path(item) do %>
+            <%= image_tag item.get_image, class: "new_item_image"  %>
+            <p class="figure-caption"><%= item.name %></p>
+            <p class="figure-caption">¥<%= item.with_tax_price %></p>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+</div>
