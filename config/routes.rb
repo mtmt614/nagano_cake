@@ -42,8 +42,14 @@ delete "/cart_items/destroy_all" => "cart_items#destroy_all"
 end
 end
 
+resources :orders, only: [:new, :create, :index, :show] do
+  collection do
+    post '/confirm' => 'orders#confirm'
+    get '/complete' => 'orders#complete'
+    end
+  end
+
 resources :items, only: [:index, :show]
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
-
