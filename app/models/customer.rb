@@ -14,5 +14,7 @@ class Customer < ApplicationRecord
   end
   
   has_many :cart_items
+  has_many :address
+  has_many :orders
   
 end
