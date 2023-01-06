@@ -17,11 +17,13 @@ class Public::CustomersController < ApplicationController
     end
   end
   
-  def unsubscribe
+  def withdraw
     @customer = Customer.find(current_customer.id)
+    @customer.update(customer_params)
+    session[:current_customer] = nil
+    redirect_to root_path
   end
-  
-  
+
   
   private
   def customer_params
