@@ -7,6 +7,14 @@
 <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
 
 <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-<%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+<%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%><br>
+</div>
+
+<h5>お届け先</h5>
+    <div>
+      <%= f.radio_button :address_option, 0, checked: "checked" %>
+      <%= f.label :address_option, "ご自身の住所" %>
+
+    </div>
 
 <% end %>
