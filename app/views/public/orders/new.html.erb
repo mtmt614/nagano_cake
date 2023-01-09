@@ -13,8 +13,36 @@
 <h5>お届け先</h5>
     <div>
       <%= f.radio_button :address_option, 0, checked: "checked" %>
-      <%= f.label :address_option, "ご自身の住所" %>
-
+      <%= f.label :address_option, "ご自身の住所" %><br>
+      〒<%= current_customer.postal_code %>
+        <%= current_customer.address %><br>
+        <%= current_customer.full_name %>
     </div>
+        <%= f.radio_button :address_option, 1 %>
+        <%= f.label :address_option, "登録済住所から選択", :value => 1, class: "mb-0" %>
+        <div class="ml-4 mb-2">
+            <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address_display) %>
+        </div>
+      
 
+<%= f.radio_button :address_option, 2 %>
+          <%= f.label :address_option, "新しいお届け先", :value => 2, class: "mb-0" %>
+          <div class="ml-4 mb-2">
+            <div class="form-group row">
+              <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-3" %>
+              <%= f.text_field :postal_code, class: "col-3" %><br>
+            </div>
+            <div class="form-group row">
+              <%= f.label :address, "住所", class: "col-3" %>
+              <%= f.text_field :address, class: "col-6" %><br>
+            </div>
+            <div class="form-group row">
+              <%= f.label :name, "宛名", class: "col-3" %>
+              <%= f.text_field :name, class: "col-3" %>
+            </div>
+          </div>
+        </div>
+      <div class="text-center">
+        <%= f.submit '確認画面へ進む', class: "btn btn-outline-primary" %>
+      </div>
 <% end %>
