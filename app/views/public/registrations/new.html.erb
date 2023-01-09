@@ -59,14 +59,14 @@
     <div class="form-group">
       <div class="row">
         <div class="col-lg-3">
-          <%= f.label :encrypted_password do %>
+          <%= f.label :password do %>
             <% if @minimum_password_length %>
               パスワード(<%= @minimum_password_length %> 文字以上)
             <% end %>
           <% end %>
         </div>
         <div class="col-lg-1"></div>
-        <div class="col-lg-3"><%= f.password_field :encrypted_password, autocomplete: "new-password", class: "form-control border-dark" %></div>
+        <div class="col-lg-3"><%= f.password_field :password, autocomplete: "new-password", class: "form-control border-dark" %></div>
       </div>
     </div>
 
