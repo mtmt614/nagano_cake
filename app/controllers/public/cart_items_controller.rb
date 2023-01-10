@@ -42,8 +42,11 @@ class Public::CartItemsController < ApplicationController
     end
 
     if @cart_item.amount.present?
-      @cart_item.save
-      redirect_to cart_items_path
+      if @cart_item.save!
+        redirect_to cart_items_path
+      else
+        redirect_to item_path(@cart_item.item)
+      end
     else
       redirect_to item_path(@cart_item.item)
     end
