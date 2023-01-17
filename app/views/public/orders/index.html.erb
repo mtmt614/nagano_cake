@@ -24,8 +24,10 @@
                   <%= order_detail.item.name %><br>
                 <% end %>
               </td>
-              <td class="align-middle"><%= "#{order.total_payment}円" %></td>
-    		      <td>
+              <td class="align-middle">
+                <%= order.total_payment %>円
+              </td>
+    		       <td class="align-middle">
     		        <%= order.status %>
     		      </td>
     		      
