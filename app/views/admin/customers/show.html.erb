@@ -1,5 +1,7 @@
 <div class="container col-12">
-  <h1 class="bg-light text-center"><%= @customer.last_name %>さんの会員詳細</h1>
+  <div class="mt-4">
+  <h4 class="text-center bg-light"><span style="background-color: gainsboro"><%= @customer.full_name %>さんの会員詳細</sapn></h1>
+  </div>
   
   <div class="row mt-4">
     <div class="col-10 align-center offset-1">
@@ -48,7 +50,7 @@
       </table>
       <div class="row">
         <div class="col-lg-5 mt-4 text-center"><%= link_to "編集する", edit_admin_customer_path, class: "btn btn-outline-success", style: 'width:170px' %></div>
-        <!--<div class="col-lg-5 mt-4 text-center"><%#= link_to "注文履歴一覧を見る", admin_login_path, class: "btn btn-outline-primary"  %></div>-->
+        <div class="col-lg-5 mt-4 text-center"><%= link_to "注文履歴一覧を見る", admin_order_path, class: "btn btn-outline-primary"  %></div>
       </div>
     </div>
   </div>

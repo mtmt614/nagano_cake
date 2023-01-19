@@ -1,9 +1,13 @@
 <div class="container mt-5">
   <div class="mx-auto">
     <div class="row mb-3">
-    <h3>ショッピングカート</h3>
+    <h4 class="text-center bg-light"><span style="background-color: gainsboro">ショッピングカート</span></h4>
+    </div>
+    
+    <div class="row mt-4">
     <div class="col text-right">
-        <%= link_to "カートを空にする", cart_items_path, class: 'btn btn-outline-danger', method: :delete %>
+        <%= link_to "カートを空にする", cart_items_destroy_all_cart_items_path, class: 'btn btn-outline-danger', method: :delete %>
+      </div>
     </div>
 
 <table>
@@ -44,12 +48,6 @@
   </tbody>
 </table>
 
-<div class="row mt-4">
-      <div class="col">
-        <%= link_to "買い物を続ける", root_path, class: "btn btn-outline-primary" %>
-      </div>
-</div>
-
 <div class="col-4 pull-right">
       <table class="table table-bordered">
         <tr>
@@ -61,6 +59,13 @@
         </tr>
       </table>
   </div>
+  
+  <div class="row mt-4">
+      <div class="col">
+        <%= link_to "買い物を続ける", root_path, class: "btn btn-outline-primary" %>
+      </div>
+  </div>
+
   <div class="text-center mt-5">
       <% if current_customer.cart_items.present? %>
         <%= link_to "情報入力に進む", new_order_path, class: "btn btn-outline-success btn-lg" %>
