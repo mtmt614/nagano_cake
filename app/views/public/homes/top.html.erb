@@ -1,10 +1,18 @@
-<div class="home-box mx-auto my-3">
-    <p class="home-text">ようこそ、ながのCAKEへ！<br>
-    このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方も商品の閲覧はできますが、<br>
-    購入には会員登録が必要になります。
-    </p>
-</div>
+<div class="container">
+      <div class="row">
+          <div class="col-xs-12 mx-auto">
+              <div class="text-center">                
+                <p>
+                  <span>ようこそ、ながのCAKEへ！</span><br>
+                    このサイトは、ケーキ販売のECサイトになります。<br>
+                    会員でない方も商品の閲覧はできますが、<br>
+                    購入には会員登録が必要になります。<br>
+                </p>
+              </div>
+          </div>
+      </div>
+  </div>
+
 <div class="container new-item">
   <h2>新着商品</h2>
   <div class="row">
@@ -13,7 +21,7 @@
       <% @items.each do |item| %>
        <td class="new_item_table">
           <%= link_to item_path(item) do %>
-            <%= image_tag item.get_image, class: "new_item_image"  %>
+            <%= image_tag item.get_image, class: "new_item_image", size: 150%>
             <p class="figure-caption"><%= item.name %></p>
             <p class="figure-caption">¥<%= item.with_tax_price %></p>
           <% end %>
@@ -23,6 +31,10 @@
   </table>
 </div>
 
-<div class="col text-right">
-  <%= link_to "全ての商品を見る>", items_path %>
-</div>
+  <div class="row">
+      <% @items.first(4).each do |item| %>
+       
+      <% end %>
+  </div>
+  <div class="all-items-show-button"><%= link_to "全ての商品をみる", items_path %></div>
+</div>          
