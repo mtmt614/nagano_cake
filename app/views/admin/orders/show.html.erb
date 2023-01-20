@@ -6,22 +6,26 @@
     <table class="table table-borderless offset-1">
       <tr>
         <th class="col-2 pl-4">購入者</th>
-        <td></td>
+        <td><%= @order.customer.full_name %></td>
       </tr>
       <tr>
         <th class="col-2 pl-4">注文日</th>
-        <td></td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
       <tr>
         <th class="col-2 pl-4">配送先</th>
         <td>
-          〒
+          〒<%= @order.postal_code %> <%= @order.address %><br>
+          <%= @order.customer.full_name %>
         </td>
       </tr>
       <tr>
         <th class="col-2 pl-4">注文ステータス</th>
         <td>
-          
+          <%= form_for (@order), url:admin_order_path(@order) do |f| %>
+          <%= f.select :status,Order.statuses.keys.to_a %>
+          <%= f.submit "更新", class: "btn btn-success" %>
+          <% end %>
         </td>
       </tr>
     </table>
@@ -37,8 +41,21 @@
             <th>制作ステータス</th>
           </thead>
           <tbody>
-            
+            <% @order.order_details.each do |order| %>
+                <tr>
+                  <td><%= order.item.name %></td>
+                  <td><%= order.item.with_tax_price %></td>
+                  <td><%= order.amount %></td>
+                  <td><%= order.item.with_tax_price * order.amount %></td>
+                  <td><%= form_for (@order_detail), url:admin_order_detail_path(@order_detail), method: :patch do |f|  %>
+                      <%= f.select :making_status, OrderDetail.making_statuses.keys.to_a %>
+                      <%= f.submit '更新',class:"btn btn-success" %>
+                      <% end %>
+                  </td>
+                </tr>
+            <% end %>
           </tbody>
+
         </table>
       </div>
       <div class="col-3 d-flex align-items-end">
@@ -53,7 +70,7 @@
           </tr>
           <tr>
             <th>請求金額合計</th>
-            <td></td>
+            <td><%= @order.total_payment %></td>
           </tr>
         </table>
       </div>
