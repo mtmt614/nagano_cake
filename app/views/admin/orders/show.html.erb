@@ -47,10 +47,10 @@
                   <td><%= order.item.with_tax_price %></td>
                   <td><%= order.amount %></td>
                   <td><%= order.item.with_tax_price * order.amount %></td>
-                  <td><%= form_for (@order_detail), url:admin_order_detail_path(@order_detail), method: :patch do |f|  %>
-                      <%= f.select :making_status, OrderDetail.making_statuses.keys.to_a %>
-                      <%= f.submit '更新',class:"btn btn-success" %>
-                      <% end %>
+                  <td><%= form_with model: order, url: admin_order_detail_path(order.id), method: :patch do |f| %>
+                    <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+                    <%= f.submit '更新', class: "btn btn-success" %>
+                  <% end %>
                   </td>
                 </tr>
             <% end %>
@@ -70,7 +70,7 @@
           </tr>
           <tr>
             <th>請求金額合計</th>
-            <td><%= @order.total_payment %></td>
+            <td><%= @order.total_payment + @order.shipping_cost %></td>
           </tr>
         </table>
       </div>

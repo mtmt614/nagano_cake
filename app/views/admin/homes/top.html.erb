@@ -20,7 +20,7 @@
                 <% end %>
               <td class="col-md-3"><%= order.customer.full_name %></td>
               <td class="col-md-3"><%= order.order_details_total(order) %></td>
-              <td class="col-md-3"><%= order.order_status_i18n %></td>
+              <td class="col-md-3"><%= order.status_i18n %></td>
             </tr>
           <% end %>
           <%= paginate @orders %>
