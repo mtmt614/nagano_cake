@@ -1,5 +1,7 @@
 <div class="container col-12">
-  <h1 class="text-center bg-light">注文履歴一覧</h1>
+  <div class="mt-4">
+    <h4 class="offset-1 mb-4"><span style="background-color: gainsboro">注文履歴一覧</span></h4>
+    </div>
   <div class="row my-5">
     <div class="col-md-10 mx-auto">
       <table class='table'>
@@ -15,11 +17,17 @@
           <% @orders.each do |order| %>
             <tr>
               <td class="col-md-3">
-                <%= link_to admin_orders_path(order) do %>
-                  <%= order.created_at.to_s(:datetime_jp_long) %></td>
+                <%= link_to admin_order_path(order) do %>
+                  <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
                 <% end %>
               <td class="col-md-3"><%= order.customer.full_name %></td>
-              <td class="col-md-3"><%= order.order_details_total(order) %></td>
+              <td class="col-md-3">
+              <% @total_amount = 0 %>
+              <% order.order_details.each do |order_detail| %>
+                <% order_detail.amount %>
+                <% end %>
+              <%= @total_amount %>
+              </td>
               <td class="col-md-3"><%= order.status_i18n %></td>
             </tr>
           <% end %>

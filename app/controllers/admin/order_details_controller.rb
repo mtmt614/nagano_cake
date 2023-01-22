@@ -1,16 +1,16 @@
-class Admin::OderDetailsController < ApplicationController
+class Admin::OrderDetailsController < ApplicationController
   
   def show
     @order = Order.find(params[:id])
   end
   
   def update
-    @order_detail = OrderDetail.find(params[:id])
+    @order_details = OrderDetail.find(params[:id])
     
-    @order_detail.update(order_detail_params)
-    @order = @order_detail.order
+    @order_details.update(order_details_params)
+    @order = @order_details.order
     
-    if @order_detail.making_status == "製作中"
+    if @order_details.making_status == "製作中"
       @order.update(status: 2)
       @order.save
     end
@@ -23,8 +23,9 @@ class Admin::OderDetailsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+
   private
-  def order_detail_params
+  def order_details_params
     params.require(:order_detail).permit(:order_id, :making_status, :count)
   end
 end

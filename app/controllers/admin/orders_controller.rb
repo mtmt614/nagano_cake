@@ -10,7 +10,7 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order)
-    if @order.update(order_status_params)
+    if @order.update(order_params)
       if @order.status.include?("入金確認")
          @order_details.update( making_status: 1)
       end

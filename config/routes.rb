@@ -12,6 +12,10 @@ resources :customers, only: [:index, :show, :edit, :update]
 resources :orders, only: [:show, :update]
 resources :order_details, only: [:update]
 
+patch 'order_details/:id' => 'order_details#update'
+get 'orders/:id' => 'orders#show', as: 'orders'
+patch 'orders/:id' => 'orders#update'
+
 get '/' => 'homes#top' , as: "login"
 
 end
@@ -35,7 +39,7 @@ get 'customers/my_page' => 'public/customers#show'
 }
 
 scope module: :public do
-  
+
 resources :cart_items, only: [:index, :destroy, :update, :create]do
   collection do
 delete "/cart_items/destroy_all" => "cart_items#destroy_all"

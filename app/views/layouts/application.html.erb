@@ -15,10 +15,6 @@
       
     <%= render "layouts/header"%>
     <main>
-    <% if admin_signed_in?%>
-      <%= render "layouts/search"%>
-    <% end %>
-      
       <%= yield %>
     </main>
     <%= render "layouts/footer"%>
