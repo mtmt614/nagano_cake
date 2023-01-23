@@ -1,5 +1,7 @@
 class Public::CustomersController < ApplicationController
   
+  before_action :authenticate_customer!
+  
   def show
     @customer = Customer.find(current_customer.id)
   end
@@ -17,17 +19,21 @@ class Public::CustomersController < ApplicationController
     end
   end
   
+
+  def unsubscribe
+  end
+  
   def withdraw
-    @customer = Customer.find(current_customer.id)
-    @customer.update(customer_params)
-    session[:current_customer] = nil
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
     redirect_to root_path
   end
 
   
   private
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email, :is_deleted)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email, :is_deleted, :encrypted_password)
   end
   
 end
