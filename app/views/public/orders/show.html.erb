@@ -14,7 +14,7 @@
               <td>
                 〒<%= @order.postal_code %><br>
                 <%= @order.address %><br>
-                <%= @order.name %>
+                <%= @order.customer.full_name %>
               </td>
             </tr>
             <tr>

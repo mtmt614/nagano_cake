@@ -51,7 +51,7 @@
       <h4><span>お届け先</span></h4>
       <p class="ml-3 my-auto">
         〒<%= @order.postal_code %><%= @order.address %><br>
-        <%= @order.name %>
+        <%= @order.customer.full_name %>
       </p>
     </div>
     <div class="row">

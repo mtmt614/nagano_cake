@@ -21,13 +21,7 @@
                   <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
                 <% end %>
               <td class="col-md-3"><%= order.customer.full_name %></td>
-              <td class="col-md-3">
-              <% @total_amount = 0 %>
-              <% order.order_details.each do |order_detail| %>
-                <% order_detail.amount %>
-                <% end %>
-              <%= @total_amount %>
-              </td>
+              <td class="col-md-3"><%= order.order_amount %></td>
               <td class="col-md-3"><%= order.status_i18n %></td>
             </tr>
           <% end %>

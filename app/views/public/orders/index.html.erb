@@ -17,7 +17,7 @@
               <td class="align-middle">
                 〒<%= order.postal_code %><br>
                 <%= order.address %><br>
-                <%= order.name %>
+                <%= order.customer.full_name %>
               </td>
               <td class="align-middle">
                 <% order.order_details.each do |order_detail| %>
